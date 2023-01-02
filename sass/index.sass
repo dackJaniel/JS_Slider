@@ -1,0 +1,138 @@
+.slider-img
+    background-color: $color-gray-100
+    padding: 100px 0
+    position: relative
+
+    @media (min-width: $device-md)
+        padding: 200px 0
+
+    .container
+        margin: 0 auto
+        display: grid
+        grid-gap: 10px
+        grid-template-columns: repeat(6, 1fr)
+        padding: 0 20px
+        position: relative
+
+        @media (min-width: $device-sm)
+            grid-template-columns: repeat(9, 1fr)
+
+        @media (min-width: $device-lg)
+            padding: 0
+
+        .landscape
+            grid-column: span 3
+            grid-row: span 1
+
+        .portrait
+            grid-column: span 3
+            grid-row: span 2
+
+        .box
+            position: relative
+            overflow: hidden
+            border-radius: 20px
+            height: 100%
+            width: 100%
+
+            div
+                opacity: 0
+                position: absolute
+                z-index: 3
+                width: 100%
+                height: 100%
+                padding: 20px
+                background-color: $color-green-dark-transparent
+                transition: opacity 250ms ease-in-out
+                overflow: hidden
+
+                h4, p
+                    color: $color-gray-100
+
+            img
+                width: 100%
+                height: 100%
+                object-fit: cover
+
+            &:hover div
+                opacity: 1
+                cursor: pointer
+
+        .active
+            background-color: $color-gray-100
+            position: fixed
+            width: 100vw
+            height: 100vh
+            z-index: 1000
+            border-radius: 0
+            left: 0
+            top: 0
+            display: flex
+            flex-direction: column-reverse
+            justify-content: center
+            align-items: center
+            padding: 20px
+
+            @media (min-width: $device-md)
+                flex-direction: row-reverse
+
+            div
+                opacity: 1
+                position: relative
+                z-index: 3
+                width: 100%
+                max-width: 400px
+                height: auto
+                // padding: 20px
+                background-color: $color-gray-100
+                // transition: opacity 250ms ease-in-out
+                // overflow: hidden
+
+                @media (min-width: $device-md)
+                    width: 300px
+
+                h4, p
+                    text-align: center
+                    color: $color-gray-900
+
+                    @media (min-width: $device-md)
+                        text-align: left
+
+            img
+                width: auto
+                height: auto
+                max-width: 300px
+                max-height: 300px
+                border-radius: 20px
+                transform: opacity .5s
+                // margin-top: 100px
+
+                @media (min-width: $device-md)
+                    max-width: 500px
+                    max-height: 500px
+
+            &:hover div
+                opacity: 1
+                cursor: auto
+
+    .img-dots
+        position: fixed
+        z-index: 99999999
+        bottom: 0
+        left: 50%
+        transform: translate(-50%, -30px)
+
+        div
+            width: 15px
+            height: 15px
+            border: 2px solid $color-gray-600
+            border-radius: 50%
+            margin: 2px
+            transition: background-color 250ms
+
+            &:hover
+                background-color: $color-gray-600
+                cursor: pointer
+
+        .active
+            background-color: $color-gray-600
